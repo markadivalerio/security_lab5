@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import csv
 
@@ -24,8 +26,15 @@ def write_to_csv(filename=output_file, headers=['ip','data'], data={}):
             writer.writerow(row)
 
 
+def analyze(data):
+    print("ok")
+
+def analyze_ip_cidr(data):
+    print("ok")
+
 def main():
     data = load_from_file(input_file)
+    analyzed_data
     write_to_csv(filename=output_file, headers=['ip','data','ip_count'], data=data)
 
 if __name__ == '__main__':
