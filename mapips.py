@@ -41,7 +41,7 @@ def checkip(ip):
 
 
 def main():
-    with open(ip_file) as fp:
+    with open(ip_file, 'r') as fp:
         line = fp.readline()
         while line:
             ip = line.strip()
