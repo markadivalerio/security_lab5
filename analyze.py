@@ -4,13 +4,16 @@ import json
 import csv
 
 
-input_file = "results_grouping.json"
-output_file = "analyze_cidr_grouping.csv"
+#input_file = "results_grouping.json"
+input_file = "results.csv"
+output_file = "analyze_results_everything.csv"
 
 def load_from_file(filename=input_file):
     data = {}
     with open(filename, 'r') as json_file:
-        data = json.load(json_file)
+        if ".json" in filename:
+            data = json.load(json_file)
+        
     return data
 
 def write_to_csv(filename, fmt_data):

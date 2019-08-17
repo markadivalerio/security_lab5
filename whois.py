@@ -7,7 +7,7 @@ from ipwhois import IPWhois
 
 
 ip_file = 'results.csv'
-new_file = 'results_whois.txt'
+new_file = 'results_whois2.txt'
 results = {}
 whoisips = {}
 errors = {}
