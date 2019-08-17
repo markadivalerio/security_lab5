@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+import os
 import sys
 import json
 import ipaddress
@@ -10,16 +12,18 @@ results = {}
 whoisips = {}
 errors = {}
 
-def get_whois(ip):
+def get_whois(ip): # and ping
     obj = IPWhois(ip)
-    res = ''
+    res = {}
     try:
         res = obj.lookup_whois(ip)
+        res['error_type'] = None
+        res['error_args'] = None
     except Exception as ex:
-        res = {"error":{
-            "type": type(ex).__name__,
-            "args": ex.args
-}}
+        res = {"error_type": type(ex).__name__,
+               "error_args": ex.args}
+    response = os.system("ping -c 1 " + ip)
+    res['pingable'] = bool(response == 0)
     return '"' + ip + '": ' + json.dumps(res)
 
 def append_to_file(newline):
