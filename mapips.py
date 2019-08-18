@@ -3,7 +3,7 @@ import ipaddress
 from ipwhois import IPWhois
 
 
-ip_file = 'results.csv'
+ip_file = 'aws/results_port80.csv'
 new_file = 'results_with_others.csv'
 results = {}
 whoisips = {}
@@ -53,13 +53,13 @@ def main():
             line = fp.readline()
     print(str(len(results)))
     jsonstr = json.dumps(results)
-    f = open('results_grouping.json','w')
+    f = open('aws/results_grouping.json','w')
     f.write(jsonstr)
     f.close()
 
     print(str(len(errors)))
     errstr = json.dumps(errors)
-    f = open('results_errors.json', 'w')
+    f = open('aws/results_errors.json', 'w')
     f.write(errstr)
     f.close()
 

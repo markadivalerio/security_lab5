@@ -5,15 +5,14 @@ import csv
 
 
 #input_file = "results_grouping.json"
-input_file = "results.csv"
-output_file = "analyze_results_everything.csv"
+input_file = "aws/results_grouping.json"
+output_file = "aws/results_grouping.csv"
 
 def load_from_file(filename=input_file):
     data = {}
     with open(filename, 'r') as json_file:
         if ".json" in filename:
             data = json.load(json_file)
-        
     return data
 
 def write_to_csv(filename, fmt_data):
@@ -38,18 +37,29 @@ def analyze_ip_cidr(data):
         }
     return fmt_data
 
-
-def analyze_whois(data):
+def analyze_grouping(data)
     fmt_data = {}
-    for ip, info in data.items():
+    for ip, grouping in data.items():
+        fmt_data[ip] = {
+            'ip': ip,
+            'ip_count':len(info)
+            'data':info
+        }
+    return fmt_data
+
+
+#def analyze_whois(data):
+#    fmt_data = {}
+#    for ip, info in data.items():
         #fmt_data['ip'] = {
         #    'ip':
-    return fmt_data
+#    return fmt_data
 
 
 def main():
     data = load_from_file(input_file)
-    fmt_data = analyze_ip_cidr(data)
+    fmt_data = analyze_grouping(data)
+    #fmt_data = analyze_ip_cidr(data)
     write_to_csv(filename=output_file, data=fmt_data)
 
 if __name__ == '__main__':

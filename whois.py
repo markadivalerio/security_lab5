@@ -6,8 +6,8 @@ import ipaddress
 from ipwhois import IPWhois
 
 
-ip_file = 'results.csv'
-new_file = 'results_whois2.txt'
+ip_file = 'aws/results_port80.csv'
+new_file = 'aws/whois_port80.txt'
 results = {}
 whoisips = {}
 errors = {}
